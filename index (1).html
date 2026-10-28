@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tirumilli Sai Prasanna – Payroll Data Entry Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#eef0ff;--bg2:#ffe9f1;--ink:#1a1440;--muted:#4b4570;--glass:rgba(255,255,255,.72);--line:rgba(26,20,64,.18);
+  --hot:#d6264f;--cool:#4a3fd1;--ok:#0b8a6c;color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg1:#120a33;--bg2:#3a0f45;--ink:#f3f0ff;--muted:#b9b2e0;--glass:rgba(24,14,60,.66);--line:rgba(243,240,255,.2);
+  --hot:#ff6a86;--cool:#9a8cff;--ok:#5ee0bd;color-scheme:dark}}
+:root[data-theme="dark"]{--bg1:#120a33;--bg2:#3a0f45;--ink:#f3f0ff;--muted:#b9b2e0;--glass:rgba(24,14,60,.66);--line:rgba(243,240,255,.2);--hot:#ff6a86;--cool:#9a8cff;--ok:#5ee0bd;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;color:var(--ink);font:400 16.5px/1.6 Manrope,system-ui,sans-serif;background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;overflow-x:hidden}
+#stage{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+#track{height:720vh}
+.panel{position:fixed;z-index:2;left:max(20px,6vw);top:50%;width:min(580px,calc(100vw - 40px));max-height:76vh;overflow:auto;
+  background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:30px 30px 26px;opacity:0;pointer-events:none;will-change:transform,opacity}
+.panel.on{pointer-events:auto}
+h1,h2,h3{font-family:Unbounded,"Arial Black",sans-serif;margin:0}
+h1{font-size:clamp(2rem,6.4vw,3.6rem);font-weight:800;line-height:1.02;letter-spacing:-.02em}
+h2{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:800;line-height:1.1;margin-bottom:14px}
+h3{font-size:1rem;font-weight:500;line-height:1.3;margin:16px 0 4px}
+.role{font-weight:700;color:var(--hot);margin:0 0 10px}
+.lede{color:var(--muted);margin:16px 0 22px}
+p{margin:0 0 10px}ul{margin:6px 0 0;padding-left:1.1em}li{margin:4px 0}
+.meta{color:var(--muted);font-size:.9rem}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:12px 18px;border-radius:999px;border:2px solid var(--ink);color:var(--ink);text-decoration:none;font-weight:700;background:transparent;font-size:.95rem;font-family:inherit;cursor:pointer;line-height:1.2}
+.btn.solid{background:var(--ink);color:var(--bg1)}
+a:focus-visible,.btn:focus-visible,input:focus-visible,#nav button:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+a{color:var(--cool);font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4px 22px}
+@media (max-width:560px){.two{grid-template-columns:1fr}.panel{padding:22px 20px}}
+.tick{list-style:none;padding:0;margin:0}.tick li::before{content:"✓ ";color:var(--hot);font-weight:800}
+input{font:700 1.35rem/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.1em;width:100%;max-width:280px;padding:12px 14px;border-radius:12px;border:2px solid var(--ink);background:transparent;color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+#res{font-weight:700;margin:0;min-height:26px}#res.bad{color:var(--hot)}#res.good{color:var(--ok)}
+#nav{position:fixed;z-index:3;right:max(12px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px}
+#nav button{width:26px;height:26px;border:0;background:transparent;padding:0;cursor:pointer;display:grid;place-items:center}
+#nav button::after{content:"";width:10px;height:10px;border-radius:50%;border:2px solid var(--ink);transition:transform .2s,background .2s}
+#nav button.cur::after{background:var(--hot);border-color:var(--hot);transform:scale(1.5)}
+.hint{position:fixed;z-index:3;bottom:max(16px,env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);font-size:.85rem;color:var(--muted);transition:opacity .4s;text-align:center;pointer-events:none}
+.rw{display:grid;grid-template-columns:1.25fr .8fr 1.35fr .7fr .6fr .7fr;gap:5px;width:100%;text-align:left;font:500 .72rem/1.2 ui-monospace,Menlo,Consolas,monospace;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 8px;margin:0 0 4px;cursor:pointer}
+.rw.hd{cursor:default;font-weight:700;border:0;padding-bottom:2px;color:var(--muted)}
+.rw.fl{background:color-mix(in srgb,var(--hot) 22%,transparent);border-color:var(--hot)}
+.rw.ans{outline:2px solid var(--ok);outline-offset:1px}
+.rw:focus-visible{outline:3px solid var(--hot)}
+</style>
+</head>
+<body>
+<canvas id="stage" aria-hidden="true"></canvas>
+<div id="track"></div>
+
+<section class="panel" aria-label="Introduction">
+  <p class="role">Payroll Data Entry Specialist</p>
+  <h1>Tirumilli Sai Prasanna</h1>
+  <p class="lede">I check data before it is entered: every digit, every field, every total. If something doesn’t add up, I flag it and ask. Scroll to fly through my work.</p>
+  <div class="btns"><a class="btn solid" href="mailto:saiprasannatirumilli96@gmail.com">Email me</a><button class="btn" type="button" data-go="4">Try the SIN check</button><button class="btn" type="button" data-go="5">Play the error hunt</button></div>
+</section>
+
+<section class="panel" aria-label="About">
+  <h2>About me</h2>
+  <p>Electronics and Communication Engineering graduate with a strong analytical mindset and hands-on experience cleaning and validating structured datasets.</p>
+  <p>I spot numerical mismatches, missing values and irregular entries, and report them to the right person. I work in Excel, Python and SQL, and I’m ready to learn Canadian payroll systems and follow strict data privacy procedures.</p>
+</section>
+
+<section class="panel" aria-label="Experience">
+  <h2>Experience</h2>
+  <h3>Deloitte · Data Analytics Virtual Internship</h3>
+  <p class="meta">February – March 2025</p>
+  <ul><li>Cleaned, organized and validated datasets for errors, gaps and inconsistencies.</li><li>Reviewed spreadsheet data to catch discrepancies and report findings.</li></ul>
+  <h3>Samsung PRISM · Research Internship</h3>
+  <p class="meta">January – June 2024</p>
+  <ul><li>Processed Wi-Fi localization datasets with Python and MATLAB.</li><li>Traced discrepancies in outputs to their causes to improve accuracy.</li></ul>
+</section>
+
+<section class="panel" aria-label="Skills">
+  <h2>What I bring</h2>
+  <ul class="tick two"><li>High-accuracy data entry</li><li>Auditing for mismatches</li><li>Numerical verification</li><li>Clear written English</li><li>Daily work on Microsoft Teams</li><li>Confidential data handling</li><li>Ready for February T4 peak</li><li>Open to the logic and accuracy assessment</li></ul>
+  <h3>Tools</h3>
+  <p>Microsoft Excel, Python, SQL, Power BI, Tableau, MATLAB, Microsoft Teams</p>
+</section>
+
+<section class="panel" aria-label="SIN check">
+  <h2>Try it: SIN check</h2>
+  <label for="sin">Type a 9-digit Canadian Social Insurance Number</label>
+  <div class="row"><input id="sin" inputmode="numeric" autocomplete="off" maxlength="11" placeholder="000 000 000" aria-describedby="res"><button class="btn" type="button" id="ex">Use a sample</button></div>
+  <p id="res" aria-live="polite">Waiting for 9 digits.</p>
+  <p class="meta">Checks digit count and the standard checksum only. It can’t confirm that a number belongs to a real person.</p>
+</section>
+
+<section class="panel" aria-label="Error hunt">
+  <h2>Error hunt</h2>
+  <p class="meta">20 payroll rows with 6 hidden mistakes: a SIN with the wrong number of digits, a blank SIN, a repeated ID, or a net pay that isn’t gross minus deductions. You get 90 seconds. Press Start, tap the bad rows, then check.</p>
+  <div class="row"><button class="btn solid" type="button" id="hstart">Start (90 s)</button><strong id="htime">90.0 s</strong></div>
+  <div id="hunt"></div>
+  <div class="row"><button class="btn solid" type="button" id="hchk">Check my answers</button><button class="btn" type="button" id="hrst">Play again</button></div>
+  <p id="hres" aria-live="polite" style="font-weight:700;margin:0"></p>
+  <p id="hwhy" class="meta"></p>
+</section>
+
+<section class="panel" aria-label="Education and contact">
+  <h2>Education and contact</h2>
+  <p><strong>B.Tech, Electronics and Communication Engineering</strong><br>KL University · 2021 – 2025 · CGPA 8.6/10</p>
+  <p>Available immediately, fully remote: Monday to Friday, 8 AM – 4:30 PM Canada Eastern Time, 20 hours a week, with overtime when needed.</p>
+  <p><a href="mailto:saiprasannatirumilli96@gmail.com">saiprasannatirumilli96@gmail.com</a> · 9110566209<br><a href="https://www.linkedin.com/in/prasanna-t-947b5b310/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/TIRUMILLI-SAIPRASANNA" target="_blank" rel="noopener">GitHub</a></p>
+</section>
+
+<nav id="nav" aria-label="Sections"></nav>
+<div class="hint" id="hint">Scroll to move forward</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var panels=[].slice.call(document.querySelectorAll('.panel')),n=panels.length,LEN=110;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav=document.getElementById('nav'),hint=document.getElementById('hint'),dots=[];
+  var names=['Intro','About','Experience','Skills','SIN check','Error hunt','Contact'];
+  function goTo(i){var h=document.documentElement.scrollHeight-innerHeight;scrollTo({top:h*i/(n-1),behavior:reduce?'auto':'smooth'});}
+  names.forEach(function(nm,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label',nm);b.onclick=function(){goTo(i);};nav.appendChild(b);dots.push(b);});
+  [].forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){goTo(+b.dataset.go);};});
+
+  var sin=document.getElementById('sin'),res=document.getElementById('res');
+  function luhn(d){var s=0;for(var i=0;i<9;i++){var v=+d[i];if(i%2){v*=2;if(v>9)v-=9;}s+=v;}return s%10===0;}
+  function chk(){
+    var d=sin.value.replace(/\D/g,'').slice(0,9);
+    sin.value=d.replace(/(\d{3})(\d{1,3})?(\d{1,3})?/,function(m,a,b,c){return a+(b?' '+b:'')+(c?' '+c:'');});
+    res.className='';
+    if(!d.length)res.textContent='Waiting for 9 digits.';
+    else if(d.length<9){res.textContent=(9-d.length)+' digit'+(9-d.length>1?'s':'')+' missing. Flag it before entry.';res.className='bad';}
+    else if(luhn(d)){res.textContent='9 digits and the checksum passes. Safe to enter.';res.className='good';}
+    else{res.textContent='9 digits, but the checksum fails. Likely a typo: flag it.';res.className='bad';}
+  }
+  sin.addEventListener('input',chk);
+  document.getElementById('ex').onclick=function(){sin.value='046454286';chk();};
+
+  (function(){
+  var names=['Asha Rao','Liam Chen','Mia Roy','Noah Smith','Zoe Park','Omar Ali','Eva Lund','Ravi Nair','Chloe Tan','Ben Okafor','Priya Shah','Jack Moore','Sara Khan','Leo Diaz','Nina Bose','Owen Ross','Tara Joshi','Ivan Petrov','Hana Sato','Dev Menon'];
+  var seed=21;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+  function dg(k){var s='';for(var i=0;i<k;i++)s+=Math.floor(rnd()*10);return s;}
+  function fmtS(s){return s?s.replace(/(\d{3})(\d{3})(\d*)/,'$1 $2 $3'):'blank';}
+  function money(v){return v.toLocaleString('en-US');}
+  var data=[];
+  names.forEach(function(nm,i){var g=2400+Math.floor(rnd()*48)*50,d=Math.round(g*(0.19+rnd()*0.06)/10)*10;data.push({n:nm,id:'E'+(2001+i),s:dg(9),g:g,d:d,net:g-d});});
+  data[3].s=dg(8);data[7].id=data[2].id;data[11].net+=120;data[14].s='';data[16].net=data[16].g+200;data[18].s=dg(10);
+  var bad={3:'SIN has 8 digits',7:'ID '+data[2].id+' repeats '+data[2].n+'’s',11:'net isn’t gross minus deductions',14:'SIN is blank',16:'net is above gross',18:'SIN has 10 digits'};
+  var TOTAL=6,LIMIT=90,box=document.getElementById('hunt'),out=document.getElementById('hres'),why=document.getElementById('hwhy'),clock=document.getElementById('htime'),startBtn=document.getElementById('hstart');
+  var flags={},t0=0,running=false,tmr=null;
+  function idle(){
+    clearInterval(tmr);running=false;flags={};why.textContent='';out.className='';out.textContent='';clock.textContent=LIMIT+'.0 s';
+    box.innerHTML='<p class="meta">Press Start to reveal the rows.</p>';
+  }
+  function start(){
+    if(running)return;
+    flags={};why.textContent='';out.className='';out.textContent='Tap the rows with a mistake, then press Check.';
+    box.innerHTML='';
+    var h=document.createElement('div');h.className='rw hd';h.innerHTML='<span>Name</span><span>ID</span><span>SIN</span><span>Gross</span><span>Ded.</span><span>Net</span>';box.appendChild(h);
+    data.forEach(function(r,i){
+      var b=document.createElement('button');b.type='button';b.className='rw';b.setAttribute('aria-pressed','false');
+      b.innerHTML=[r.n,r.id,fmtS(r.s),money(r.g),money(r.d),money(r.net)].map(function(c){return '<span>'+c+'</span>';}).join('');
+      b.onclick=function(){if(!running)return;flags[i]=!flags[i];b.classList.toggle('fl',!!flags[i]);b.setAttribute('aria-pressed',String(!!flags[i]));};
+      box.appendChild(b);
+    });
+    running=true;t0=Date.now();
+    tmr=setInterval(function(){var left=LIMIT-(Date.now()-t0)/1000;if(left<=0){finish();}else{clock.textContent=left.toFixed(1)+' s';}},100);
+  }
+  function finish(){
+    if(!running)return;
+    clearInterval(tmr);running=false;
+    var used=Math.min(LIMIT,(Date.now()-t0)/1000),hit=0,fp=0,missed=[],els=box.querySelectorAll('button.rw');
+    for(var i=0;i<data.length;i++){
+      if(flags[i]&&bad[i])hit++;else if(flags[i])fp++;
+      if(bad[i]){els[i].classList.add('ans');missed.push(data[i].n+': '+bad[i]);}
+    }
+    var acc=Math.round(100*hit/(TOTAL+fp));
+    clock.textContent=used.toFixed(1)+' s';
+    out.textContent='Accuracy '+acc+'%. Found '+hit+' of '+TOTAL+' mistakes with '+fp+' false flag'+(fp===1?'':'s')+' in '+used.toFixed(1)+' seconds.'+(acc===100?' Clean sweep.':'');
+    out.className=acc>=80?'good':'bad';
+    why.textContent='The mistakes (outlined in green): '+missed.join('; ')+'.';
+  }
+  startBtn.onclick=start;
+  document.getElementById('hchk').onclick=finish;
+  document.getElementById('hrst').onclick=function(){idle();start();};
+  idle();
+})();
+
+  var p=0,target=0;
+  function readScroll(){var h=document.documentElement.scrollHeight-innerHeight;target=h>0?Math.min(1,Math.max(0,scrollY/h)):0;}
+  addEventListener('scroll',readScroll,{passive:true});readScroll();
+
+  function layout(){
+    var best=0,bd=9;
+    panels.forEach(function(el,i){
+      var d=(p-i/(n-1))*(n-1),a=Math.abs(d);
+      var o=Math.max(0,Math.min(1,1-(a-0.2)/0.3));
+      el.style.opacity=o;
+      el.style.transform='translateY(calc(-50% + '+(d*-70)+'px)) scale('+(1-Math.min(a,1)*0.06)+')';
+      el.style.visibility=o<0.01?'hidden':'visible';
+      el.classList.toggle('on',o>0.6);
+      if(a<bd){bd=a;best=i;}
+    });
+    dots.forEach(function(b,i){b.classList.toggle('cur',i===best);});
+    hint.style.opacity=p<0.03?1:0;
+  }
+
+  var THREE=window.THREE,renderer,scene,camera,objs=[],rings=[],sprites=[];
+  var canvas=document.getElementById('stage');
+  try{renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});}catch(e){renderer=null;}
+  if(!renderer||!THREE){var f=function(){p=target;layout();};addEventListener('scroll',f);f();return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
+  scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(60,1,0.1,200);
+
+  var cols=['#7b6cff','#19b9a6','#ff4d6d'],texs={};
+  function dTex(ch,col){var k=ch+col;if(texs[k])return texs[k];var c=document.createElement('canvas');c.width=c.height=64;var g=c.getContext('2d');
+    g.font='bold 46px ui-monospace,Menlo,Consolas,monospace';g.textAlign='center';g.textBaseline='middle';g.fillStyle=col;g.fillText(ch,32,34);
+    var t=new THREE.CanvasTexture(c);return texs[k]=new THREE.SpriteMaterial({map:t,transparent:true,depthWrite:false});}
+  var seed=5;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+  for(var i=0;i<460;i++){
+    var flag=rnd()<0.07,ch=flag?'?':String(Math.floor(rnd()*10));
+    var s=new THREE.Sprite(dTex(ch,flag?cols[2]:cols[rnd()<0.5?0:1]));
+    var a=rnd()*6.283,r=4+rnd()*14;
+    s.position.set(Math.cos(a)*r,Math.sin(a)*r*0.7,12-rnd()*(LEN+40));
+    var sc=flag?1.7:0.9+rnd()*0.7;s.scale.set(sc,sc,1);s.userData={ph:rnd()*6.28,y:s.position.y,sp:0.3+rnd()*0.6};
+    scene.add(s);sprites.push(s);
+  }
+  var geos=[new THREE.IcosahedronGeometry(2.4,1),new THREE.TorusKnotGeometry(1.7,0.55,120,16),new THREE.OctahedronGeometry(2.6),new THREE.DodecahedronGeometry(2.4),new THREE.BoxGeometry(3,3,3),new THREE.TorusGeometry(2,0.7,16,48),new THREE.TetrahedronGeometry(3)];
+  var wcol=[0x7b6cff,0x19b9a6,0xff4d6d,0x7b6cff,0x19b9a6,0xff4d6d,0x7b6cff];
+  for(var j=0;j<n;j++){
+    var z=-LEN*j/(n-1);
+    var g=new THREE.Group();
+    g.add(new THREE.Mesh(geos[j],new THREE.MeshBasicMaterial({color:wcol[j],wireframe:true})));
+    g.add(new THREE.Mesh(geos[j],new THREE.MeshBasicMaterial({color:wcol[j],transparent:true,opacity:0.14})));
+    g.userData={z:z-15};scene.add(g);objs.push(g);
+    var rg=new THREE.Mesh(new THREE.TorusGeometry(7.5,0.07,8,80),new THREE.MeshBasicMaterial({color:wcol[j]}));
+    rg.position.z=z-6;scene.add(rg);rings.push(rg);
+  }
+  var mx=0,my=0,wide=true;
+  addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;},{passive:true});
+  function resize(){var w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();wide=w>860;
+    objs.forEach(function(o){o.position.set(wide?5.2:0,wide?0:4.2,o.userData.z);});}
+  addEventListener('resize',function(){resize();frame(0);});resize();
+
+  function frame(t){
+    p=reduce?target:p+(target-p)*0.07;
+    layout();
+    var z=-p*LEN;
+    camera.position.set(mx*1.6,-my*1.0,z+8);
+    camera.lookAt(mx*0.8,-my*0.5,z-20);
+    camera.rotation.z=Math.sin(p*18)*0.03;
+    objs.forEach(function(o,i){o.rotation.x=t*0.3+i;o.rotation.y=t*0.4+i*0.7;});
+    rings.forEach(function(r,i){r.rotation.z=t*0.2*(i%2?1:-1);});
+    if(!reduce)sprites.forEach(function(s){s.position.y=s.userData.y+Math.sin(t*s.userData.sp+s.userData.ph)*0.5;});
+    renderer.render(scene,camera);
+  }
+  function loop(ms){frame(ms/1000);requestAnimationFrame(loop);}
+  if(reduce){frame(0);addEventListener('scroll',function(){frame(0);},{passive:true});}else requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
